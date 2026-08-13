@@ -12,19 +12,19 @@ export const metadata: Metadata = {
 
 export default function MusicPage() {
   return (
-    <div className="min-h-screen py-6 px-4 sm:px-6 flex flex-col items-center relative pb-40 sm:pb-36">
-      <div className="max-w-5xl mx-auto w-full flex flex-col flex-1">
+    <div className="min-h-screen py-6 px-3 sm:px-6 flex flex-col items-center relative pb-40 sm:pb-36 overflow-x-hidden w-full max-w-full">
+      <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-w-0">
         {/* Header */}
-        <header className="pb-6 flex items-center justify-between flex-wrap gap-2">
+        <header className="pb-6 flex items-center justify-between flex-wrap gap-2 w-full">
           <OnlineUsersBadge />
           <HeaderTitleBadge />
         </header>
 
         {/* Hero Title Area — fills the space between header and dock,
             vertically centered so no dead gap sits in the middle */}
-        <div className="text-center my-6 sm:my-16 space-y-3 sm:space-y-4 relative px-2 flex-1 flex flex-col items-center justify-center">
+        <div className="text-center my-6 sm:my-16 space-y-3 sm:space-y-4 relative px-2 flex-1 flex flex-col items-center justify-center w-full max-w-full">
           {/* Dark vignette behind text for readability */}
-          <div className="absolute inset-0 -inset-x-8 sm:-inset-x-16 -inset-y-8 sm:-inset-y-12 bg-black/30 rounded-3xl blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 -inset-x-2 sm:-inset-x-16 -inset-y-8 sm:-inset-y-12 bg-black/30 rounded-3xl blur-3xl pointer-events-none" />
           <p className="relative text-[10px] sm:text-xs font-mono text-white/80 tracking-[0.3em] sm:tracking-[0.35em] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
             from the valley
           </p>

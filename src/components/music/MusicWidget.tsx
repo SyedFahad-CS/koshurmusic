@@ -224,7 +224,7 @@ export default function MusicWidget() {
     !(dragSource === "player" && draggedSong?.id === currentSong.id);
 
   return (
-    <div className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom))] sm:bottom-[max(2rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-5xl bento-card-texture px-4 sm:px-5 py-3 sm:py-3 select-none rounded-3xl border border-white/20 shadow-[0_25px_60px_-10px_rgba(0,0,0,0.85)] overflow-hidden">
+    <div className="fixed bottom-[max(0.5rem,env(safe-area-inset-bottom))] sm:bottom-[max(2rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-50 w-[94%] xs:w-[95%] sm:w-[96%] max-w-5xl bento-card-texture px-3 sm:px-5 py-2.5 sm:py-3 select-none rounded-3xl border border-white/20 shadow-[0_25px_60px_-10px_rgba(0,0,0,0.85)] overflow-hidden">
       {/* Hidden YouTube IFrame Player (1x1 px, invisible, powers playback) */}
       <div
         ref={containerRef}
