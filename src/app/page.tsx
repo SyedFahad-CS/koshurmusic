@@ -1,23 +1,42 @@
-import type { Metadata } from "next";
+"use client";
+
+import React, { useState } from "react";
 import MusicWidget from "@/components/music/MusicWidget";
 import { OnlineUsersBadge } from "@/components/music/OnlineUsersBadge";
 import { HeaderTitleBadge } from "@/components/music/HeaderTitleBadge";
+import { WeatherModeButton, WeatherMode } from "@/components/music/WeatherModeButton";
+import { RainOverlay } from "@/components/music/RainOverlay";
+import { SnowOverlay } from "@/components/music/SnowOverlay";
 import "@/styles/music.css";
 
-export const metadata: Metadata = {
-  title: "Music | Koshur Music",
-  description:
-    "A collection of songs I love, presented as an interactive physical CD player.",
-};
-
 export default function MusicPage() {
+  const [weatherMode, setWeatherMode] = useState<WeatherMode>("clear");
+
   return (
     <div className="min-h-screen py-6 px-3 sm:px-6 flex flex-col items-center relative pb-40 sm:pb-36 overflow-x-hidden w-full max-w-full">
-      <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-w-0">
+      {/* Subtle Weather Tint */}
+      <div
+        className={`fixed inset-0 pointer-events-none z-10 transition-all duration-700 ${
+          weatherMode === "snow"
+            ? "opacity-100 bg-black/15 backdrop-brightness-[0.92]"
+            : weatherMode === "rain"
+            ? "opacity-100 bg-black/20 backdrop-brightness-[0.88]"
+            : "opacity-0"
+        }`}
+      />
+
+      {/* Visual Rain & Snow Canvas Overlays */}
+      <RainOverlay isActive={weatherMode === "rain"} />
+      <SnowOverlay isActive={weatherMode === "snow"} />
+
+      <div className="max-w-5xl mx-auto w-full flex flex-col flex-1 min-w-0 relative z-20">
         {/* Header */}
         <header className="pb-6 flex items-center justify-between flex-wrap gap-2 w-full">
           <OnlineUsersBadge />
-          <HeaderTitleBadge />
+          <div className="flex items-center gap-2">
+            <WeatherModeButton onWeatherChange={setWeatherMode} />
+            <HeaderTitleBadge />
+          </div>
         </header>
 
         {/* Hero Title Area — fills the space between header and dock,

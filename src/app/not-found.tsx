@@ -61,7 +61,7 @@ export default function NotFound() {
   };
 
   return (
-    <div className="h-screen h-[100vh] h-[100dvh] w-full py-4 px-4 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="h-dvh w-full py-4 px-4 flex flex-col items-center justify-center relative overflow-hidden">
       {/* Warm vignette behind the scene for readability */}
       <div className="absolute inset-0 bg-black/35 pointer-events-none" />
       <div className="absolute top-1/4 -translate-y-1/2 w-[70vw] max-w-3xl h-[50vh] bg-black/40 rounded-full blur-[120px] pointer-events-none" />
