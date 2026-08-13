@@ -58,6 +58,7 @@ export interface Song {
 // Metadata (titles, artists, thumbnails) is automatically fetched!
 export const MUSIC_SOURCES: string[] = [
   "https://www.youtube.com/watch?v=5H-BJKdtT50",
+  "https://www.youtube.com/watch?v=R8aQmhL418I",
   "https://www.youtube.com/playlist?list=PL64JoX5IBpa4vWEZgN5VDMseGNbxctTeA",
   "https://www.youtube.com/watch?v=rn9aNVsABvc",
   "https://www.youtube.com/watch?v=0e4ZuNvcXqM",

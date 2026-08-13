@@ -2,6 +2,14 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
+import {
+  PlusCircle,
+  CornerDownLeft,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+  X,
+} from "lucide-react";
 import { extractVideoId } from "@/lib/youtube";
 
 interface AddSongEasterEggProps {
@@ -139,8 +147,9 @@ export default function AddSongEasterEgg({ addSong }: AddSongEasterEggProps) {
         onSubmit={handleSubmit}
         className="flex items-center gap-2.5 bg-black/90 backdrop-blur-2xl border border-white/20 rounded-full px-4 py-2 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
       >
-        <span className="text-amber-400 text-xs font-mono font-bold tracking-widest bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20">
-          + ADD SONG
+        <span className="text-amber-400 text-xs font-mono font-bold tracking-widest bg-amber-400/10 px-2.5 py-0.5 rounded-full border border-amber-400/20 flex items-center gap-1.5">
+          <PlusCircle size={13} className="text-amber-400" />
+          ADD SONG
         </span>
         <input
           ref={inputRef}
@@ -159,31 +168,37 @@ export default function AddSongEasterEgg({ addSong }: AddSongEasterEggProps) {
         {status === "idle" && (
           <button
             type="submit"
-            className="text-xs font-mono font-bold text-black bg-amber-400 hover:bg-amber-300 transition-colors px-2.5 py-1 rounded-full shadow-sm"
+            className="text-xs font-mono font-bold text-black bg-amber-400 hover:bg-amber-300 transition-colors px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1"
           >
-            Add
+            <span>Add</span>
+            <CornerDownLeft size={12} strokeWidth={2.5} />
           </button>
         )}
         {status === "loading" && (
-          <span className="text-xs font-mono text-amber-400 animate-pulse px-2">
+          <span className="flex items-center gap-1.5 text-xs font-mono text-amber-400 px-2">
+            <Loader2 size={13} className="animate-spin" />
             Loading...
           </span>
         )}
         {status === "success" && (
-          <span className="text-xs font-mono text-emerald-400 font-bold px-2">
-            ✓ Added!
+          <span className="flex items-center gap-1 text-xs font-mono text-emerald-400 font-bold px-2">
+            <CheckCircle2 size={13} />
+            Added!
           </span>
         )}
         {status === "error" && (
-          <span className="text-xs font-mono text-red-400 px-2">Invalid URL</span>
+          <span className="flex items-center gap-1 text-xs font-mono text-red-400 px-2">
+            <AlertCircle size={13} />
+            Invalid URL
+          </span>
         )}
         <button
           type="button"
           onClick={handleClose}
-          className="text-xs text-white/40 hover:text-white transition-colors ml-1"
+          className="text-xs text-white/40 hover:text-white transition-colors ml-1 p-0.5 rounded-full hover:bg-white/10"
           title="Close (Esc)"
         >
-          ✕
+          <X size={14} />
         </button>
       </form>
     </div>,
