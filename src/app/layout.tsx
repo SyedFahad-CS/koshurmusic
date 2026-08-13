@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   title: "Koshur Music",
   description:
     "A collection of songs I love, presented as an interactive physical CD player.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

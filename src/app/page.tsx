@@ -49,6 +49,17 @@ export default function MusicPage() {
 
         {/* Fixed Bottom Glass Dock Widget */}
         <MusicWidget />
+
+        {/* Minimal Distraction-Free Bottom Corner Attribution */}
+        <a
+          href="https://fahadandrabi.tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-2.5 right-3 sm:right-4 z-40 text-[10px] font-mono text-white/35 hover:text-amber-400 transition-colors pointer-events-auto select-none px-2 py-0.5 rounded-full bg-black/30 hover:bg-black/60 backdrop-blur-sm border border-white/10 hover:border-amber-400/30 shadow-xs"
+          title="Designed & Developed by Fahad Andrabi"
+        >
+          Fahad Andrabi
+        </a>
       </div>
     </div>
   );
