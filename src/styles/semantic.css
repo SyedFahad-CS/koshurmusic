@@ -1,0 +1,46 @@
+/* ============================================
+   SEMANTIC TOKENS — 21 tokens, defined once
+   light-dark() picks the right value per mode
+   ============================================ */
+
+:root {
+  color-scheme: light dark;
+
+  --background: light-dark(var(--neutral-50), var(--neutral-900));
+  --foreground: light-dark(var(--neutral-900), var(--neutral-50));
+
+  --card: light-dark(#ffffff, var(--neutral-800));
+  --card-foreground: light-dark(var(--neutral-900), var(--neutral-50));
+
+  --popover: light-dark(#ffffff, var(--neutral-800));
+  --popover-foreground: light-dark(var(--neutral-900), var(--neutral-50));
+
+  --primary: light-dark(var(--brand-700), var(--brand-300));
+  --primary-dark: light-dark(var(--brand-900), var(--brand-100));
+  --primary-foreground: light-dark(#ffffff, var(--brand-900));
+
+  --secondary: light-dark(var(--neutral-100), var(--neutral-800));
+  --secondary-foreground: light-dark(var(--neutral-900), var(--neutral-50));
+
+  --muted: light-dark(var(--neutral-100), var(--neutral-800));
+  --muted-foreground: light-dark(var(--neutral-600), var(--neutral-400));
+
+  --accent: light-dark(var(--neutral-100), var(--neutral-800));
+  --accent-foreground: light-dark(var(--neutral-900), var(--neutral-50));
+
+  --destructive: light-dark(var(--error-600), var(--error-400));
+  --destructive-foreground: light-dark(#ffffff, var(--error-900));
+
+  --success: light-dark(var(--success-600), var(--success-400));
+  --success-foreground: light-dark(#ffffff, var(--success-900));
+
+  --border: light-dark(var(--neutral-200), var(--neutral-700));
+  --input: light-dark(var(--neutral-200), var(--neutral-700));
+  --ring: light-dark(var(--brand-700), var(--brand-300));
+
+  --code-bg: light-dark(#1e293b, #0f172a);
+  --code-text: light-dark(#e2e8f0, #e2e8f0);
+}
+
+.dark  { color-scheme: dark; }
+.light { color-scheme: light; }

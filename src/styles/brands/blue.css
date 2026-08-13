@@ -1,0 +1,13 @@
+/* Blue brand — hue 259.3° pulled from #0F3F88 */
+:root {
+  --brand-50:  oklch(0.97 0.033 259.3);
+  --brand-100: oklch(0.93 0.055 259.3);
+  --brand-200: oklch(0.87 0.079 259.3);
+  --brand-300: oklch(0.79 0.103 259.3);
+  --brand-400: oklch(0.70 0.122 259.3);
+  --brand-500: oklch(0.60 0.134 259.3);
+  --brand-600: oklch(0.50 0.138 259.3);
+  --brand-700: oklch(0.41 0.135 259.3);
+  --brand-800: oklch(0.32 0.125 259.3);
+  --brand-900: oklch(0.22 0.105 259.3);
+}

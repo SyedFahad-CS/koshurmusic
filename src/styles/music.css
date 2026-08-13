@@ -1,0 +1,387 @@
+/* ============================================
+   Music Player Widget — Fixed Bottom Glass Dock
+   ============================================ */
+
+/* Fixed Bottom Floating Glass Bar */
+.bento-card-texture {
+  background: rgba(16, 16, 24, 0.85);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 25px 60px -10px rgba(0, 0, 0, 0.8),
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Subtle micro-grain noise */
+.bento-card-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Warm ambient backdrop light glow */
+.bento-card-texture::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 5%;
+  width: 40%;
+  height: 200%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   Circular Platter Deck
+   ============================================ */
+
+.cd-player-body {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 6px 16px -3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cd-player-body.is-drop-target {
+  transform: scale(1.08);
+  border-color: rgba(245, 158, 11, 0.9);
+  box-shadow:
+    0 10px 25px -4px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* Recessed Platter Circle */
+.cd-player-recess {
+  position: relative;
+  width: 94%;
+  height: 94%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(35, 35, 48, 0.95) 0%,
+    rgba(18, 18, 26, 0.98) 75%,
+    rgba(12, 12, 18, 1) 100%
+  );
+  box-shadow:
+    inset 0 4px 8px rgba(0, 0, 0, 0.7),
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spindle Center Pin */
+.cd-player-spindle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(40, 40, 52, 0.9) 60%,
+    rgba(15, 15, 22, 1) 100%
+  );
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.cd-spindle-hub {
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cd-spindle-pin {
+  width: 45%;
+  height: 45%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
+}
+
+/* ============================================
+   CD Disc Visual Representation
+   ============================================ */
+
+.cd-disc {
+  position: relative;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  background-clip: padding-box !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  box-shadow:
+    0 6px 16px -3px rgba(0, 0, 0, 0.5),
+    0 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.cd-disc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50% !important;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.08) 2px,
+    rgba(255, 255, 255, 0.08) 3px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cd-disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50% !important;
+  background: conic-gradient(
+    from 45deg,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0.22) 30deg,
+    rgba(240, 180, 255, 0.14) 60deg,
+    rgba(255, 255, 255, 0) 90deg,
+    rgba(180, 230, 255, 0.18) 120deg,
+    rgba(255, 255, 255, 0) 150deg,
+    rgba(255, 200, 200, 0.14) 180deg,
+    rgba(255, 255, 255, 0) 210deg,
+    rgba(200, 255, 220, 0.18) 240deg,
+    rgba(255, 255, 255, 0) 270deg,
+    rgba(255, 235, 180, 0.18) 300deg,
+    rgba(255, 255, 255, 0) 330deg,
+    rgba(255, 255, 255, 0.22) 360deg
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cd-disc-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24%;
+  height: 24%;
+  border-radius: 50% !important;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(220, 220, 230, 0.85) 60%,
+    rgba(180, 180, 195, 0.7) 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cd-disc-hole {
+  width: 48%;
+  height: 48%;
+  border-radius: 50% !important;
+  background: rgba(18, 18, 26, 0.95);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.cd-disc-hole-on-player {
+  background: radial-gradient(circle at 35% 35%, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
+}
+
+@keyframes cd-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cd-spinning {
+  animation: cd-rotate 6.5s linear infinite;
+}
+
+.cd-hover-lift {
+  cursor: grab;
+  border-radius: 50% !important;
+  background: transparent !important;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+}
+
+.cd-hover-lift:hover {
+  transform: scale(1.08);
+  filter: brightness(1.15);
+}
+
+.cd-hover-lift:active {
+  cursor: grabbing;
+  transform: scale(0.96);
+}
+
+.cd-dragging-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(1.08);
+  border-radius: 50% !important;
+  background: transparent !important;
+  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.65));
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@keyframes snap-into-player {
+  0% {
+    transform: scale(0.85) translateY(-8px);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cd-snap-in {
+  animation: snap-into-player 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+
+.carousel-3d-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-3d-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  user-select: none;
+  touch-action: none;
+  will-change: transform, opacity;
+}
+
+/* Minimal Stage Floor Light Reflection */
+.carousel-3d-reflection-line {
+  position: absolute;
+  bottom: 5px;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  border-radius: 50%;
+}
+
+.carousel-3d-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-3d-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  user-select: none;
+  touch-action: none;
+  will-change: transform, opacity;
+}
+
+/* Minimal Stage Floor Light Reflection */
+.carousel-3d-reflection-line {
+  position: absolute;
+  bottom: 15px;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  border-radius: 50%;
+}
+
+
+/* Playlist Drawer */
+.playlist-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.playlist-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+@keyframes eq-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+.animate-eq-bar {
+  animation: eq-bar 0.9s ease-in-out infinite;
+}

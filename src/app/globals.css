@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "../styles/primitives/neutral.css";
+@import "../styles/primitives/feedback.css";
+@import "../styles/brands/blue.css";
+@import "../styles/semantic.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-headline: var(--font-bricolage), sans-serif;
+  --font-body: var(--font-outfit-loaded), sans-serif;
+  --font-label: var(--font-outfit-loaded), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-outfit: var(--font-outfit-loaded), sans-serif;
+  --font-fraunces: var(--font-fraunces-loaded), serif;
+  --font-highlight: var(--font-fraunces-loaded), serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-background);
+  background-image: url("/koshurbackground.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--color-foreground);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+/* Respect reduced motion: swap the background video for the static image */
+@media (prefers-reduced-motion: reduce) {
+  video[data-bg] {
+    display: none;
+  }
+}

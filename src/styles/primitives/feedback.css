@@ -1,0 +1,24 @@
+/* Error hue 27.7° (from #ba1a1a), success hue 142° (green, independent of brand) */
+:root {
+  --error-50:  oklch(0.97 0.039 27.7);
+  --error-100: oklch(0.93 0.064 27.7);
+  --error-200: oklch(0.87 0.092 27.7);
+  --error-300: oklch(0.79 0.119 27.7);
+  --error-400: oklch(0.70 0.141 27.7);
+  --error-500: oklch(0.60 0.155 27.7);
+  --error-600: oklch(0.50 0.160 27.7);
+  --error-700: oklch(0.41 0.156 27.7);
+  --error-800: oklch(0.32 0.145 27.7);
+  --error-900: oklch(0.22 0.122 27.7);
+
+  --success-50:  oklch(0.97 0.034 142);
+  --success-100: oklch(0.93 0.056 142);
+  --success-200: oklch(0.87 0.080 142);
+  --success-300: oklch(0.79 0.104 142);
+  --success-400: oklch(0.70 0.123 142);
+  --success-500: oklch(0.60 0.136 142);
+  --success-600: oklch(0.50 0.140 142);
+  --success-700: oklch(0.41 0.137 142);
+  --success-800: oklch(0.32 0.126 142);
+  --success-900: oklch(0.22 0.107 142);
+}
